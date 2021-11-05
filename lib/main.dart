@@ -1,51 +1,33 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:untitled3/magazine.dart';
-import 'package:untitled3/title.dart';
+import 'package:untitled3/aslamy.dart';
+import 'package:untitled3/kor2an/suradate.dart';
 
 void main(){
-  runApp(Homescreen());
+  runApp(myapp());
 }
-class Homescreen extends StatelessWidget {
-  List<categoriesitem>mycategoriesData=[
-    categoriesitem('assets/images/s.jpg', 'سياسه'),
-    categoriesitem('assets/images/e.jpg', 'تكنولوجيا'),
-    categoriesitem('assets/images/l.jpg', 'اقتصاد'),
-    categoriesitem('assets/images/v.jpg', 'رياضه'),
-    categoriesitem('assets/images/i.jpg', 'سياحه'),
-    categoriesitem('assets/images/n.jpg', 'سيارات'),
-    categoriesitem('assets/images/a.png', 'صحه'),
-    categoriesitem('assets/images/d.jpg', 'طهى'),
-    categoriesitem('assets/images/o.jpg', 'معرفه'),
-    categoriesitem('assets/images/k.jpg', 'حواء'),];
+class mythemedata{
+  static final primaryColor = Color.fromRGBO(183, 147, 95, 1.0);
+  static final selectedIconcolor = Colors.black;
+  static final unselectedIconcolor = Colors.white;
+  static final colortit=Colors.black;
+
+}
+class myapp extends StatelessWidget{
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'my app',
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('Home'),
-        ),
-        body: Column(
-          children: [
-            Row(
-              children: [
-                newTitle('الاخبار'),
-                newTitle('المجلات'),
-              ],
-            ),
-            Expanded(child: ListView.builder(
-                itemCount: mycategoriesData.length,
-                itemBuilder: (buildContext, index) {
-                  return categoriesitem(mycategoriesData[index].image,
-                      mycategoriesData[index].title);
-                }
-
-            ))
-          ],
-        ),
+      theme: ThemeData(
+        primaryColor: mythemedata.primaryColor,
+accentColor: mythemedata.primaryColor
       ),
-
-
+      title: 'flutter Demo',
+      routes:{
+        HomePageislami.routeName:(buildcontext)=>HomePageislami(),
+        suradata.routename:(buildcontext)=>suradata()
+      },
+      initialRoute: HomePageislami.routeName,
     );
-  }}
+  }
+}
+
